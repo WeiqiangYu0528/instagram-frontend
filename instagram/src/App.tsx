@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react';
+import Header from "./components/header";
+import Sidebar from "./components/suggestions/suggestions";
+import Dashboard from "./pages/dashboard";
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import * as ROUTES from './constants/routes'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <div>
+      <Dashboard />
+  </div>
   );
 }
 
 export default App;
+
+    {/* <Router>
+        {/* <Suspense fallback={<ReactLoader />}> */}
+        <Routes>
+        <Route path={ROUTES.LOGIN}  />
+        <Route path={ROUTES.SIGN_UP}  />
+        <Route path={ROUTES.PROFILE} />
+        {/* <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact> */}
+
+        {/* </ProtectedRoute> */}
+        <Route />
+      </Routes>
+    {/* </Suspense> */}
+  // </Router> */}
