@@ -17,12 +17,13 @@
     "react-router-dom": "^6.8.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "delay-cli": "^1.1.0"
   },
   "scripts": {
     "build:css": "postcss src/styles/tailwind.css -o src/styles/app.css",
     "watch:css": "postcss src/styles/tailwind.css -o src/styles/app.css --watch",
-    "react-scripts:start": "sleep 5 && react-scripts start",
+    "react-scripts:start": "delay 5 && react-scripts start",
     "start": "run-p watch:css react-scripts:start",
     "build": "run-s build:css react-scripts:build",
     "test": "react-scripts test",

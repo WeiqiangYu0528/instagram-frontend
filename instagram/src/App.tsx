@@ -2,13 +2,15 @@
 import Header from "./components/header";
 import Sidebar from "./components/suggestions/suggestions";
 import Dashboard from "./pages/dashboard";
+import Profile from "./components/profile";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import * as ROUTES from './constants/routes'
 
 function App() {
   return (
   <div>
-      <Dashboard />
+      {/* <Dashboard /> */}
+      <Profile/>
   </div>
   );
 }
