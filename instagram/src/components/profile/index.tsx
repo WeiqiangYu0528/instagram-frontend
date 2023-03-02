@@ -4,10 +4,12 @@ import Header from "./header";
 import Photos from "./photos";
 
 export default function Profile() {
+  let isUserSelf:boolean = false;
+
   return (
     <>
-      <Header />
-      <Photos />
+      <Header isUserSelf = {isUserSelf}/>
+      <Photos isUserSelf = {isUserSelf}/>
     </>
   );
 }

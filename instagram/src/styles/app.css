@@ -627,6 +627,9 @@ video {
 .w-40 {
   width: 10rem;
 }
+.w-28 {
+  width: 7rem;
+}
 .w-16 {
   width: 4rem;
 }
@@ -701,9 +704,9 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-gray-300 {
+.bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
 }
 .bg-neutral-800\/50 {
   background-color: rgb(38 38 38 / 0.5);

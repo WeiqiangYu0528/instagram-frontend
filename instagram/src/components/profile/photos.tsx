@@ -2,13 +2,15 @@
 import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 
-export default function Photos() {
+export default function Photos({isUserSelf}:{isUserSelf:boolean}) {
   var photos: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
   return (
     <div className="h-16 border-t border-gray-primary mt-12 pt-4">
+      
       <div className="flex items-center justify-center flex-row">
         <button className="mr-10">POSTS</button>
+        {isUserSelf ? <button className="mr-10">SAVED</button> : <></>}
         <button>TAGGED</button>
       </div>
       <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
