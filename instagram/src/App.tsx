@@ -1,6 +1,4 @@
 // import React from 'react';
-import Header from "./components/header";
-import Sidebar from "./components/suggestions/suggestions";
 import Dashboard from "./pages/dashboard";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import * as ROUTES from './constants/routes'
