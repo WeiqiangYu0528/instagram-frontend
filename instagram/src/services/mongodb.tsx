@@ -2,7 +2,7 @@ import React from 'react'
 import { MongoClient} from 'mongodb'
 
 export async function getPosts() {
-    const mongoClient = new MongoClient("mongodb+srv://yuweiqiang:<Maple393!>@cluster0.aqmf8yb.mongodb.net/instagram?retryWrites=true&w=majority");
+    const mongoClient = new MongoClient("");
     const data = await mongoClient
         .db()
         .collection("posts")
