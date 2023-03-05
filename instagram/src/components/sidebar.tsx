@@ -1,11 +1,15 @@
 import React from 'react'
+import SearchBar from './search/searchBar'
+import {useState} from 'react'
 
 export default function Sidebar() {
+    const [searchButtonClicked,setSearchButtonClicked] = useState(false)
+
   return (
-        <div className="container col-span-1 bg-white p-6 border-r border-gray-primary ">
+        <div className="container col-span-1 bg-white p-6 border-r border-gray-primary relative">
             <div className="text-gray-700 text-center flex align-items cursor-pointer">
             <h1 className="flex w-full">
-                <img src="./images/logo.png" alt="Instagram" className="mt-2 w-6/12" />
+            <img src="./images/logo.png" alt="Instagram" className="mt-2 w-6/12" />
             </h1>
             </div>
             <ul>
@@ -14,7 +18,7 @@ export default function Sidebar() {
                     <svg aria-label="Home" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M22 23h-6.001a1 1 0 0 1-1-1v-5.455a2.997 2.997 0 1 0-5.993 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.543a1.002 1.002 0 0 1 .31-.724l10-9.543a1.001 1.001 0 0 1 1.38 0l10 9.543a1.002 1.002 0 0 1 .31.724V22a1 1 0 0 1-1 1Z"></path></svg>
                     <span className='ml-3'>Home</span>
                     </li>
-                    <li className="hover:text-custom-blue flex mt-7">
+                    <li className="hover:text-custom-blue flex mt-7" onClick={()=>{setSearchButtonClicked(!searchButtonClicked)}}>
                     <svg aria-label="Search" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
                     <span className='ml-3'>Search</span>
                     </li>
@@ -40,6 +44,11 @@ export default function Sidebar() {
                     </li>
                 </div>
             </ul>
+            {searchButtonClicked && 
+            <div className="absolute -right-full inset-y-0 duration-100 ease-in-out border-transparent">
+                <SearchBar/>
+            </div>  
+            }
         </div>
   )
 }
