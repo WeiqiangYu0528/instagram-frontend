@@ -507,6 +507,9 @@ video {
 .-right-full {
   right: -100%;
 }
+.left-full {
+  left: 100%;
+}
 .col-span-1 {
   grid-column: span 1 / span 1;
 }
@@ -619,8 +622,8 @@ video {
 .w-6 {
   width: 1.5rem;
 }
-.w-80 {
-  width: 20rem;
+.w-96 {
+  width: 24rem;
 }
 .w-4\/6 {
   width: 66.666667%;
@@ -636,9 +639,6 @@ video {
 }
 .w-16 {
   width: 4rem;
-}
-.w-96 {
-  width: 24rem;
 }
 .max-w-screen-lg {
   max-width: 1024px;

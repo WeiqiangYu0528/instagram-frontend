@@ -1,13 +1,22 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-
+/*
 export interface SearchResult{
     userName:string;
     avatarURL:string;
     mainPageURL:string;
     isFollowed:boolean;
 };
+*/
+export interface SearchResult{
+    userID : string;
+    userName: string;
+    userDescription: string;
+    avatarURL:string;
+    userURL:string;
+    isFollowing:boolean;
+}
 
 interface SearchCardProps{
     result:SearchResult;
@@ -15,12 +24,12 @@ interface SearchCardProps{
 
 export default function SearchResultCard(props:SearchCardProps){
     const result:SearchResult = props.result;
+    const [isFollowed,setIsFollowed] = useState(result.isFollowing);
+    const handleFollowingClicked = async ()=>{
 
-    const [isFollowed,setIsFollowed] = useState(result.isFollowed);
-    const handleFollowingClicked = ()=>{
         setIsFollowed(false);
     };
-    const handleFollowClicked=()=>{
+    const handleFollowClicked= async ()=>{
         setIsFollowed(true);
     };
 
@@ -34,7 +43,7 @@ export default function SearchResultCard(props:SearchCardProps){
                         <img src={result.avatarURL} alt={result.userName} className="w-[40px] h-[40px] rounded-full hover:scale-105"/>
                         <div className="flex flex-col h-full w-[calc(100%-40px)]" >
                             <p className="h-1/2 w-full pl-3 pb-0 mb-0 font-semibold text-sm overflow-hidden">{result.userName}</p>
-                            <p className="h-1/2 w-full pl-3 pb-3 font-light text-sm overflow-hidden">user description here aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p className="h-1/2 w-full pl-3 pb-3 font-light text-sm overflow-hidden">{result.userDescription}</p>
                         </div>
                     </div>
                 </div>
@@ -48,12 +57,12 @@ export default function SearchResultCard(props:SearchCardProps){
     );
 
     /**add this after introducing route
-     * <Link to={result.mainPageURL}  className='h-16 w-4/6 no-underline'>
+     * <Link to={result.userURL}  className='h-16 w-4/6 no-underline'>
                     <div className="flex flex-row p-1 h-full w-full">
                         <img src={result.avatarURL} alt={result.userName} className="w-[40px] h-[40px] rounded-full hover:scale-105"/>
                         <div className="flex flex-col h-full w-[calc(100%-40px)]" >
                             <p className="h-1/2 w-full pl-3 pb-0 mb-0 font-semibold text-sm overflow-hidden">{result.userName}</p>
-                            <p className="h-1/2 w-full pl-3 pb-3 font-light text-sm overflow-hidden">user description here aaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+                            <p className="h-1/2 w-full pl-3 pb-3 font-light text-sm overflow-hidden">{result.userDescription}</p>
                         </div>
                     </div>
                 </Link>
