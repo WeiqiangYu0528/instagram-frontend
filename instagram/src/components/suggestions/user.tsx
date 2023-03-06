@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Skeleton from 'react-loading-skeleton'
+import UserContext from '../../contexts/user-context'
 
 export default function User() {
+  const {username} = useContext(UserContext);
   return (
     <div>
         <Skeleton count={1} height={61}/>
@@ -10,7 +12,7 @@ export default function User() {
                 <img className='rounded-full w-16 h-16 flex mr-3' src="./images/avatars/cat.jpg" alt="" />
             </div>
             <div className="col-span-3">
-                <p className="font-bold text-sm">Alex Sarah</p>
+                <p className="font-bold text-sm">{username}</p>
                 <p className="text-sm">Bob Alice</p>
             
             </div>
