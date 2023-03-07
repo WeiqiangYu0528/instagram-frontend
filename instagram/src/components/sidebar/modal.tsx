@@ -1,11 +1,13 @@
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useContext, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { modalType } from './sidebarType'
 import axios from 'axios';
 import Thumbnail from './thumbnail';
 import ModalForm from './modal-form';
+import UserContext from '../../contexts/user-context';
 
 export default function Modal(props: modalType) {
+  const {username} = useContext(UserContext);
   const [imgs, setImgs] = useState<string[]>([]);
   const [imgIdx, setImgIdx] = useState(0);
   const [showForm, setShowForm] = useState(false);
@@ -13,6 +15,8 @@ export default function Modal(props: modalType) {
   const [imgFiles, setImgFiles] = useState<Blob[]>([]);
   const [thumbnail, setThumbnail] = useState(false);
   const cancelButtonRef = useRef(null);
+
+  console.log(username);
 
   const handleFileChange = (e: any) => {
     const newImgs = [];
@@ -42,7 +46,6 @@ export default function Modal(props: modalType) {
     setImgIdx(Math.max(0, imgIdx - 1));
   }
 
-
   async function handleClick() {
     if (!showForm) {
       setShowForm(true);
@@ -53,11 +56,11 @@ export default function Modal(props: modalType) {
       formData.append("caption", caption);
       formData.append("avatar", "https://drscdn.500px.org/photo/1061497838/q%3D80_m%3D1500_of%3D1/v2?sig=50f03aaa9f8f72ff52b541175f0e0af804a22517c8c096fb30e23318d938a658");
       for (const imgFile of imgFiles) {
-        formData.append("imgFiles", imgFile);
+        formData.append("media", imgFile);
       }
       await axios({
         method: "post",
-        url: "http://localhost:8080/api/posts/Connor",
+        url: `http://localhost:8080/api/posts/${username}`,
         data: formData,
         headers: { "Content-Type": "multipart/form-data" },
       }).then(function (res) {

@@ -4,10 +4,11 @@ import axios from 'axios';
 
 export default function AddComment(props: postAddComment) {
   const [comment, setComment] = useState("");
+  const formData = new FormData();
+  formData.append("comment", comment);
   const newComment = {
-    username: props.username,
+    id: props.id,
     comment: comment,
-    avatar: props.avatar,
   }
 
   const handleSubmit = (e: any) => {
@@ -32,7 +33,7 @@ export default function AddComment(props: postAddComment) {
         <form className='flex justify-between pl-0 pr-5' method='POST' onSubmit={handleSubmit}>
         <input data-testid="input-comment" type="text" aria-label='Add a comment' autoComplete='off' className='text-sm text-gray-base w-full mr-3 py-5 px-4'
         name='add-comment' placeholder='Add a comment' value={comment} onChange={(e) => setComment(e.target.value) }/>
-        {comment !== "" && <button className="text-sm font-bold text-blue-medium" data-testid="post-button" type='submit'>POST</button>}
+        {comment !== "" && <button  style={{ "color": "rgb(0, 149, 246)" }} className="text-sm font-bold text-blue-medium" data-testid="post-button" type='submit'>POST</button>}
         </form>
     </div>
   )

@@ -1,13 +1,26 @@
-import React,{useEffect, useState} from 'react'
+import React,{useEffect, useState, useContext} from 'react'
+import {Route, useNavigate } from 'react-router-dom';
 import Suggestions from '../components/suggestions/suggestions'
 import Timeline from '../components/timeline'
 import Sidebar from '../components/sidebar/sidebar'
 import axios from 'axios'
+import UserContext from '../contexts/user-context'
+import * as ROUTES from '../constants/routes';
+import { postType } from '../components/post/postType';
 
 export default function Dashboard() {
-  const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
+  const {username} = useContext(UserContext);
+  const [posts, setPosts] = useState<postType[]>([]);
+  
+
   useEffect(() => {
-    getPosts();
+    if(username === ""){
+      navigate(ROUTES.LOGIN);
+    }
+    else{
+      getPosts();
+    }
   },[]
   );
   
