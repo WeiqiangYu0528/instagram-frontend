@@ -1,32 +1,27 @@
 // import React from 'react';
-import Header from "./components/header";
-import Sidebar from "./components/suggestions/suggestions";
-import Dashboard from "./pages/dashboard";
-import Profile from "./components/profile";
-import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { lazy, Suspense, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
 import * as ROUTES from './constants/routes'
+import UserContext from './contexts/user-context';
+
 
 function App() {
+  const [username, setUsername] = useState("");
+  
+  const Login = lazy(() => import('./pages/login'));
+  const Dashboard= lazy(() => import('./pages/dashboard'));
   return (
-  <div>
-      {/* <Dashboard /> */}
-      <Profile/>
-  </div>
+    <UserContext.Provider value={{username: username}}>
+      <Router>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
+          <Route path={ROUTES.LOGIN} element={<Login onLogin={setUsername}/>} />
+          <Route path={ROUTES.DASHBOARD} element={<Dashboard/>} />
+        </Routes>
+      </Suspense>
+    </Router>
+    </UserContext.Provider>
   );
 }
 
 export default App;
-
-    {/* <Router>
-        {/* <Suspense fallback={<ReactLoader />}> */}
-        <Routes>
-        <Route path={ROUTES.LOGIN}  />
-        <Route path={ROUTES.SIGN_UP}  />
-        <Route path={ROUTES.PROFILE} />
-        {/* <ProtectedRoute user={user} path={ROUTES.DASHBOARD} exact> */}
-
-        {/* </ProtectedRoute> */}
-        <Route />
-      </Routes>
-    {/* </Suspense> */}
-  // </Router> */}
