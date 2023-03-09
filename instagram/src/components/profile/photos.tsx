@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react'
 import Skeleton from "react-loading-skeleton";
+import {useState} from "react"
 import { postType, postImage } from "../post/postType";
-import PostModal from "../post/modal";
+import PostModal from "../post/modal"
 
 export default function Photos({
   isUserSelf,
@@ -152,15 +152,15 @@ export default function Photos({
           <span>TAGGED</span>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-8 mt-4 mb-12 cursor-pointer" onClick={() => setOpen(true)}>
+      <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
         {posts.map((post) => (
-          <div className="relative group z-10">
+          <div className="relative group" onClick={()=>setOpen(true)}>
             <img
               src={"data:image/png;base64," + post.mediaList[0].data.data}
               alt="profile pic"
             />
 
-            <div className="absolute bottom-0 left-0  z-20 w-full justify-evenly items-center h-full bg-neutral-800/50 group-hover:flex hidden">
+            <div className="absolute bottom-0 left-0  z-10 w-full justify-evenly items-center h-full bg-neutral-800/50 group-hover:flex hidden">
               <p className="flex items-center text-white font-bold">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

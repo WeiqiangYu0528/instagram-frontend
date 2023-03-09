@@ -60,23 +60,20 @@ export default function UserModal({
                   <h1 className="flex items-center justify-center h-20 font-bold">
                     Change Profile Photo
                   </h1>
-                  <span
-                    className="flex items-center justify-center h-10 border-t-2 cursor-pointer text-blue-500 font-bold"
-                    onClick={handleFileChange}
-                  >
-                    Upload Photo
-                    <input type="file" className='absolute top-0 left-0 opacity-0 w-full h-full' onChange={handleFileChange} accept="image/*" multiple />
-                  </span>
-                  {/* <button className="absolute top-1/3 left-1/3 px-3 py-2 bg-sky-600 rounded-lg text-white font-bold cursor-pointer">
-                    Select from computer
+                  <label className="inline-block h-10 w-full">
+                    <span
+                      className="flex items-center justify-center h-10 border-t-2 text-blue-500 font-bold cursor-pointer"
+                    >
+                      Upload Photo
+                    </span>
                     <input
                       type="file"
-                      className="absolute top-0 left-0 opacity-0 w-full h-full"
+                      className="absolute w-full opacity-0 -z-10"
                       onChange={handleFileChange}
                       accept="image/*"
                       multiple
-                    />
-                  </button> */}
+                    ></input>
+                  </label>
                   <span className="flex items-center justify-center h-10 border-t-2 cursor-pointer text-red-500 font-bold">
                     Remove Current Photo
                   </span>

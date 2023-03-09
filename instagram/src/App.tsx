@@ -17,7 +17,7 @@ function App() {
       <Router>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
-          <Route path={ROUTES.LOGIN} element={<Login/>} />
+          {/* <Route path={ROUTES.LOGIN} element={<Login/>} /> */}
           <Route path={ROUTES.DASHBOARD} element={<Dashboard/>} />
           <Route path={ROUTES.PROFILE} element={<UserProfile/>} />
         </Routes>
