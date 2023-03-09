@@ -13,7 +13,7 @@ export default function Sidebar(props: sidebarType) {
     return (
         <>
             <Modal open={showModal} onClose={() => setShowModal(false)} onCreatePost={props.onCreatePost} />
-            <div className="container col-span-1 bg-white p-10 border-r border-gray-primary h-screen sticky top-0 z-10">
+            <div className="container col-span-1 bg-white p-10 border-r border-gray-primary h-screen sticky top-0 z-50">
                 <div className="text-gray-700 text-center flex align-items cursor-pointer">
                     <h1 className="flex">
                         <img src="./images/logo.png" alt="Instagram" className="mt-2 w-6/12" />

@@ -20,6 +20,7 @@ export default function Login(props: loginType) {
         try {
             const response = await axios.post('http://localhost:8080/login', obj);
             console.log(response);
+            props.onLogin(response.data.username);
             navigate(ROUTES.DASHBOARD);
         }
         catch {

@@ -35,6 +35,7 @@ export default function SignUp() {
             console.log(response);
             setError('')
             setMessage('Congrats! You have successfully registered.');
+            navigate(ROUTES.LOGIN);
         }
         catch {
             console.error(error);
@@ -60,7 +61,7 @@ export default function SignUp() {
                     <h1 className="flex justify-center w-full">
                         <img src="/images/watig_logo.png" alt="Instagram" className="mt-2 w-full mb-4"/>
                     </h1>
-                    {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
+                    {error && <p className="mb-4 text-xs text-red-600">{error}</p>}
 
                     <form onSubmit={handleSignup} method="POST">
                         <input
@@ -102,7 +103,8 @@ export default function SignUp() {
                         <button
                             disabled={isInvalid}
                             type="submit"
-                            className={`bg-blue-medium text-white w-full rounded h-8 font-bold
+                            style={{ "backgroundColor": "rgb(0, 149, 246)" }}
+                            className={`text-white w-full rounded h-8 font-bold
                         ${isInvalid && 'opacity-50'}`}
                         >
                             Sign up

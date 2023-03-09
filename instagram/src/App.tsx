@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router
 import * as ROUTES from './constants/routes'
 import UserContext from './contexts/user-context';
 
-
 function App() {
   const [username, setUsername] = useState("");
   
@@ -12,12 +11,14 @@ function App() {
   const Dashboard= lazy(() => import('./pages/dashboard'));
   const UserProfile= lazy(() => import('./pages/userProfile'));
 
+  const SignUp = lazy(() => import("./pages/sign-up"));
   return (
     <UserContext.Provider value={{username: username}}>
       <Router>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
-          {/* <Route path={ROUTES.LOGIN} element={<Login/>} /> */}
+          <Route path={ROUTES.LOGIN} element={<Login onLogin={setUsername}/>} />
+          <Route path={ROUTES.SIGN_UP} element={<SignUp/>} />
           <Route path={ROUTES.DASHBOARD} element={<Dashboard/>} />
           <Route path={ROUTES.PROFILE} element={<UserProfile/>} />
         </Routes>
