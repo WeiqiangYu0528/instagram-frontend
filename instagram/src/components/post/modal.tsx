@@ -8,6 +8,7 @@ import AddComment from './add-comment';
 
 export default function Modal(props:postModal) {
   const [imgIdx, setImgIdx] = useState(0);
+  const media = props.mediaList[imgIdx].data.data;
 
   const cancelButtonRef = useRef(null)
 
@@ -42,10 +43,10 @@ export default function Modal(props:postModal) {
                   <div className="sm:flex sm:items-start ">
                     <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                       <div className="mt-2 relative bg-black pb-[100%]">
-                        <img className='absolute h-full w-full object-cover' src={'data:image/png;base64,' + props.imgUrls[imgIdx]} alt="" />
+                        <img className='absolute h-full w-full object-cover' src={'data:image/png;base64,' + media} alt="" />
                         {imgIdx > 0 &&  <button className='absolute top-1/2 left-[5%] text-sm z-10 text-white cursor-pointer bg-[#1a1a1acc]  rounded-full px-2 py-0.5 font-bold' 
                         onClick={() => {setImgIdx(imgIdx - 1)}}>&#10094;</button>}
-                        {imgIdx < props.imgUrls.length - 1 && <button className='absolute top-1/2 right-[5%] text-sm z-10 text-white cursor-pointer bg-[#1a1a1acc] rounded-full px-2 py-0.5 font-bold'
+                        {imgIdx < props.mediaList.length - 1 && <button className='absolute top-1/2 right-[5%] text-sm z-10 text-white cursor-pointer bg-[#1a1a1acc] rounded-full px-2 py-0.5 font-bold'
                         onClick={() => {setImgIdx(imgIdx + 1)}}>&#10095;</button>}
                             <p className="text-sm text-gray-500">
                           Are you sure you want to deactivate your account? All of your data will be permanently
@@ -56,10 +57,10 @@ export default function Modal(props:postModal) {
                   </div>
                 </div>
                 <div className='container col-span-1'>
-                  <Header username = {props.username} avatar={props.avatar} postDate={props.postDate}/>
-                  <ModalComment username = {props.username} caption={props.caption} avatar={props.avatar} postDate={props.postDate} comments={props.comments}/>
+                  <Header username = {props.username} avatar={props.avatar} time_created={props.time_created}/>
+                  <ModalComment username = {props.username} caption={props.caption} avatar={props.avatar} time_created={props.time_created} comments={props.comments}/>
                   <Actions likes={props.likes} />
-                  <AddComment _id={props._id} username={props.username} avatar={props.avatar} onCreateComment={props.onCreateComment} />
+                  <AddComment id={props.id} username={props.username} avatar={props.avatar} onCreateComment={props.onCreateComment} />
                 </div>
               </Dialog.Panel>
             </Transition.Child>

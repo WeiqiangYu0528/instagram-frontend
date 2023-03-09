@@ -17,7 +17,7 @@ export default function ModalComment(props:postModalComment) {
           return (
             <div className="flex items-center mt-8">
             <img className="rounded-full h-8 w-8 flex wr-3" src={comment.avatar} alt="" />
-            <span className="text-sm font-bold ml-3">{comment.username}</span>
+            <span className="text-sm font-bold ml-3">Conner</span>
             <span className="text-sm ml-3">{comment.comment}</span>
             {/* <span className="text-sm text-gray-base ml-3">{formatDistanceToNowStrict(new Date(props.postDate))}</span> */}
             {/* <span className="text-sm font-bold text-blue-medium ml-3">Follow</span> */}

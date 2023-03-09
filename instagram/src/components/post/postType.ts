@@ -1,26 +1,42 @@
 export type postComment = {
-    _id:string,
+    id:object_id,
     username:string,
     comment:string,
     avatar:string,
 }
 
+export type object_id = {
+  date:string,
+  timestamp: number
+}
+
+export type media = {
+  id: object_id,
+  data:{
+    data:string,
+    type:number
+  }
+}
+
 export type postType = {
-    _id:string,
+    id:string,
     username:string,
     likes:number,
     comments: postComment[],
     caption:string,
+    location?:string,
+    time_created:string,
+    time_modified?:string,
+    type?:string,
     onCreateComment?:any;
     avatar:string,
-    imgUrls:string[],
-    postDate:string,
+    mediaList: media[],
   }
 
 export type postHeader = {
     username:string,
     avatar:string,
-    postDate:string,
+    time_created:string,
   }
 
 
@@ -39,7 +55,7 @@ export type postFooter = {
 }
 
 export type postAddComment = {
-  _id:string,
+  id:string,
   username:string,
   comment?:string,
   onCreateComment?:any,
@@ -47,18 +63,18 @@ export type postAddComment = {
 }
 
 export type postImage = {
-  imgUrls:string[],
+  mediaList:media[],
   caption?:string,
 }
 
 export type postModal = {
-  _id:string,
+  id:string,
   username:string,
   avatar:string,
-  postDate:string,
+  time_created:string,
   open:boolean,
   onClose: () => void,
-  imgUrls:string[],
+  mediaList:media[],
   comments:postComment[],
   caption: string,
   likes: number,
@@ -69,6 +85,6 @@ export type postModalComment = {
   username:string,
   avatar:string,
   caption: string,
-  postDate: string,
+  time_created: string,
   comments: postComment[],
 }
