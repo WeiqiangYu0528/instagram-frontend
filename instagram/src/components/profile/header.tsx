@@ -1,18 +1,27 @@
 import React from "react";
-import {useState } from 'react'
-import UserModal from "./modal"
+import { useState } from "react";
+import UserModal from "./userModal";
+import AvatarModal from "./avatarModal";
 
-export default function UserProfile({ isUserSelf }: { isUserSelf: boolean }) {
-  const [isOpen, setOpen] = useState(false);
+export default function UserProfile({
+  isUserSelf,
+  postCount,
+}: {
+  isUserSelf: boolean;
+  postCount: number;
+}) {
+  const [isAvatarOpen, setAvatarOpen] = useState(false);
+  const [isUserOpen, setUserOpen] = useState(false);
 
   return (
     <>
       <div className="grid grid-cols-3 gap-4 justify-between mx-auto max-w-screen-lg">
         <div className="container flex justify-center items-center">
           <img
-            className="rounded-full h-40 w-40 flex"
+            className="rounded-full h-40 w-40 flex cursor-pointer"
             src="./images/avatars/cat.jpg"
             alt="profile pic"
+            onClick={()=>setAvatarOpen(true)}
           />
         </div>
         <div className="flex items-center justify-center flex-col col-span-2">
@@ -35,7 +44,7 @@ export default function UserProfile({ isUserSelf }: { isUserSelf: boolean }) {
                   viewBox="0 0 24 24"
                   width="24"
                   className="ml-2 cursor-pointer"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setUserOpen(true)}
                 >
                   <circle
                     cx="12"
@@ -79,7 +88,7 @@ export default function UserProfile({ isUserSelf }: { isUserSelf: boolean }) {
                   viewBox="0 0 24 24"
                   width="32"
                   className="ml-2 cursor-pointer"
-                  onClick={() => setOpen(true)}
+                  onClick={() => setUserOpen(true)}
                 >
                   <circle cx="12" cy="12" r="1.5"></circle>
                   <circle cx="6" cy="12" r="1.5"></circle>
@@ -90,7 +99,7 @@ export default function UserProfile({ isUserSelf }: { isUserSelf: boolean }) {
           </div>
           <div className="container flex mt-4">
             <p className="mr-10">
-              <span className="font-bold">photosCount</span> posts
+              <span className="font-bold">{postCount}</span> posts
             </p>
             <p className="mr-10 cursor-pointer">
               <span className="font-bold">followerCount</span>
@@ -107,7 +116,16 @@ export default function UserProfile({ isUserSelf }: { isUserSelf: boolean }) {
           </div>
         </div>
       </div>
-      <UserModal isOpen = {isOpen} isUserSelf = {isUserSelf} onClose={() => setOpen(false)}></UserModal>
+      <UserModal
+        isOpen={isUserOpen}
+        isUserSelf={isUserSelf}
+        onClose={() => setUserOpen(false)}
+      ></UserModal>
+      <AvatarModal
+        isOpen={isAvatarOpen}
+        isUserSelf={isUserSelf}
+        onClose={() => setAvatarOpen(false)}
+      ></AvatarModal>
     </>
   );
 }

@@ -1,9 +1,18 @@
 /* eslint-disable no-nested-ternary */
-import PropTypes from "prop-types";
+import { useState } from 'react'
 import Skeleton from "react-loading-skeleton";
+import { postType, postImage } from "../post/postType";
+import PostModal from "../post/modal";
 
-export default function Photos({ isUserSelf }: { isUserSelf: boolean }) {
-  var photos: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+export default function Photos({
+  isUserSelf,
+  posts,
+}: {
+  isUserSelf: boolean;
+  posts: postType[];
+}) {
+  // var photos: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="h-16 border-t border-gray-primary mt-12 pt-4">
@@ -143,12 +152,15 @@ export default function Photos({ isUserSelf }: { isUserSelf: boolean }) {
           <span>TAGGED</span>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
-        {photos.map(() => (
-          <div className="relative group">
-            <img src="./images/avatars/cat.jpg" alt="profile pic" />
+      <div className="grid grid-cols-3 gap-8 mt-4 mb-12 cursor-pointer" onClick={() => setOpen(true)}>
+        {posts.map((post) => (
+          <div className="relative group z-10">
+            <img
+              src={"data:image/png;base64," + post.mediaList[0].data.data}
+              alt="profile pic"
+            />
 
-            <div className="absolute bottom-0 left-0  z-10 w-full justify-evenly items-center h-full bg-neutral-800/50 group-hover:flex hidden">
+            <div className="absolute bottom-0 left-0  z-20 w-full justify-evenly items-center h-full bg-neutral-800/50 group-hover:flex hidden">
               <p className="flex items-center text-white font-bold">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +174,7 @@ export default function Photos({ isUserSelf }: { isUserSelf: boolean }) {
                     clipRule="evenodd"
                   />
                 </svg>
-                photo.likes.length
+                {post.likes}
               </p>
 
               <p className="flex items-center text-white font-bold">
@@ -178,9 +190,22 @@ export default function Photos({ isUserSelf }: { isUserSelf: boolean }) {
                     clipRule="evenodd"
                   />
                 </svg>
-                photo.comments.length
+                {post.comments?.length}
               </p>
             </div>
+            <PostModal
+              id={post.id}
+              open={open}
+              username={post.username}
+              caption={post.caption}
+              likes={post.likes}
+              avatar={post.avatar}
+              time_created={post.time_created}
+              comments={post.comments}
+              mediaList={post.mediaList}
+              onClose={() => setOpen(false)}
+              onCreateComment={post.onCreateComment}
+            />
           </div>
         ))}
       </div>
@@ -188,6 +213,6 @@ export default function Photos({ isUserSelf }: { isUserSelf: boolean }) {
   );
 }
 
-Photos.propTypes = {
-  photos: PropTypes.array,
-};
+// Photos.propTypes = {
+//   photos: PropTypes.array,
+// };
