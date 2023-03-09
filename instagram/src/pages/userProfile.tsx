@@ -43,12 +43,11 @@ useEffect(
   return (
     <>
       <div className="bg-gray-background">
-        <div className="grid grid-cols-5 gap-12 ">
+        <div className="grid grid-cols-5 gap-12 max-w-screen-2xl">
           <div className="col-span-1">
             <Sidebar onCreatePost={() => getPosts()} />
           </div>
-
-          <div className="col-span-4 flex flex-col max-w-screen-2xl">
+          <div className="col-span-4 flex flex-col">
             <button onClick={() => setIsUserSelf(!isUserSelf)}>set user</button>
             <Header isUserSelf={isUserSelf} postCount={posts.length} />
             <Photos isUserSelf={isUserSelf} posts={posts} />
