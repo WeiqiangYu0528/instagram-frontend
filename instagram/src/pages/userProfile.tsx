@@ -1,14 +1,14 @@
-import { lazy, useContext, useEffect, useState } from "react";
+import { lazy,useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/profile/header";
 import Photos from "../components/profile/photos";
 import { postType } from "../components/post/postType";
 import Sidebar from "../components/sidebar/sidebar";
-import UserContext from "../contexts/user-context";
+import { useParams } from "react-router-dom";
 
-export default function Profile() {
+export default function Profile(props: any) {
   // let isUserSelf:boolean = false;
-  const {username} = useContext(UserContext);
+  const { username } = useParams();
   const [isUserSelf, setIsUserSelf] = useState(false);
   const [posts, setPosts] = useState<postType[]>([]);
 

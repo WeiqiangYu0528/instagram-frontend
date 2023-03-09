@@ -62,7 +62,7 @@ export default function Sidebar(props: sidebarType) {
                             <span className='ml-3'>Create</span>
                         </li>
                         <li className="flex items-center mt-7 cursor-pointer" onClick={() => {navigate(`/p/${username}`)}}>
-                            <img className='rounded-full w-6 h-6 flex mr-3' src="./images/avatars/cat.jpg" alt="" />
+                            <img className='rounded-full w-6 h-6 flex mr-3' src="/images/avatars/cat.jpg" alt="" />
                             Profile
                         </li>
                         <div className='absolute bottom-0 mt-7 py-10 pr-32 '>

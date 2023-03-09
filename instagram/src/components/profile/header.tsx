@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState} from "react";
 import UserModal from "./userModal";
 import AvatarModal from "./avatarModal";
-import UserContext from "../../contexts/user-context";
+import { useParams } from "react-router-dom";
 
 export default function UserProfile({
   isUserSelf,
@@ -13,7 +13,7 @@ export default function UserProfile({
 }) {
   const [isAvatarOpen, setAvatarOpen] = useState(false);
   const [isUserOpen, setUserOpen] = useState(false);
-  const {username} = useContext(UserContext);
+  const {username} = useParams();
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function UserProfile({
         <div className="container flex justify-center items-center">
           <img
             className="rounded-full h-40 w-40 flex cursor-pointer"
-            src="./images/avatars/cat.jpg"
+            src="/images/avatars/cat.jpg"
             alt="profile pic"
             onClick={()=>setAvatarOpen(true)}
           />
