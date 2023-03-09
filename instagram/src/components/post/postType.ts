@@ -1,5 +1,5 @@
 export type postComment = {
-    id:string,
+    id:object_id,
     username:string,
     comment:string,
     avatar:string,
