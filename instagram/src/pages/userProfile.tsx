@@ -50,7 +50,7 @@ useEffect(
           <div className="col-span-4 flex flex-col">
             <button onClick={() => setIsUserSelf(!isUserSelf)}>set user</button>
             <Header isUserSelf={isUserSelf} postCount={posts.length} />
-            <Photos isUserSelf={isUserSelf} posts={posts} />
+            <Photos isUserSelf={isUserSelf} posts={posts} onCreateComment={getUserPosts} />
           </div>
         </div>
       </div>

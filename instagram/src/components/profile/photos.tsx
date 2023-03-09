@@ -7,9 +7,11 @@ import PostModal from "../post/modal"
 export default function Photos({
   isUserSelf,
   posts,
+  onCreateComment
 }: {
   isUserSelf: boolean;
-  posts: postType[];
+  posts: postType[],
+  onCreateComment: () => {};
 }) {
   // var photos: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   const [open, setOpen] = useState(false);
@@ -172,7 +174,7 @@ export default function Photos({
                 comments={post.comments}
                 mediaList={post.mediaList}
                 onClose={() => setOpen(false)}
-                onCreateComment={post.onCreateComment}
+                onCreateComment={onCreateComment}
                 opacity="bg-opacity-25"
               />
               <div className="relative group" onClick={() => setOpen(true)}>
