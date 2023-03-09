@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from  '../constants/routes';
+import { loginType } from './pageType';
 
-
-export default function Login() {
+export default function Login(props: loginType) {
     const navigate = useNavigate();
     // const { firebase } = useContext(FirebaseContext);
 
@@ -27,20 +27,6 @@ export default function Login() {
             // Show a message indicating incorrect login credentials to the user
             setError('Incorrect login credentials. Please try again.');
         }
-        
-        // const auth = await axios.post('http://localhost:8080/login', obj)
-        // .then((res) => {
-        //     console.log(res);
-        //   }).catch((err) => {
-        //     console.error(err);
-        //   });
-        // console.log(auth);
-        // if (usernameExists === "login successful556") {
-        //     navigate(ROUTES.DASHBOARD);
-        // }
-        // else {
-
-        // }
     };
       
     
@@ -83,8 +69,9 @@ export default function Login() {
                         <button onClick={handleLogin}
                             disabled={isInvalid}
                             type="submit"
-                            className={`bg-blue-medium text-white w-full rounded h-8 font-bold
-                        ${isInvalid && 'opacity-50'}`}
+                            style={{ "backgroundColor": "rgb(0, 149, 246)" }}
+                            className={`text-white w-full rounded h-8 font-bold
+                            ${isInvalid && 'opacity-50'}`}
                         >
                             Login
                         </button>
