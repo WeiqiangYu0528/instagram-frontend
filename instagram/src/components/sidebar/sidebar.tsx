@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import Modal from './modal';
 import { sidebarType } from './sidebarType';
+import SearchBar from '../search/searchBar'
 
 export default function Sidebar(props: sidebarType) {
     const [showMore, setShowMore] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [searchButtonClicked,setSearchButtonClicked] = useState(false);
+    const [isCollapsed,setIsCollapsed] = useState(false);
+    const [searchBarBuffer,setSearchBarBuffer] = useState<string>("");
 
     return (
         <>
@@ -21,7 +25,13 @@ export default function Sidebar(props: sidebarType) {
                             <svg aria-label="Home" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M22 23h-6.001a1 1 0 0 1-1-1v-5.455a2.997 2.997 0 1 0-5.993 0V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V11.543a1.002 1.002 0 0 1 .31-.724l10-9.543a1.001 1.001 0 0 1 1.38 0l10 9.543a1.002 1.002 0 0 1 .31.724V22a1 1 0 0 1-1 1Z"></path></svg>
                             <span className='ml-3'>Home</span>
                         </li>
-                        <li className="hover:text-custom-blue flex mt-7 cursor-pointer">
+                        <li className="hover:text-custom-blue flex mt-7 cursor-pointer" 
+                            onClick={()=>{
+                                setSearchButtonClicked(!searchButtonClicked);
+                                if(!searchButtonClicked){
+                                    
+                                }
+                            }}>
                             <svg aria-label="Search" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M19 10.5A8.5 8.5 0 1 1 10.5 2a8.5 8.5 0 0 1 8.5 8.5Z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path><line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="16.511" x2="22" y1="16.511" y2="22"></line></svg>
                             <span className='ml-3'>Search</span>
                         </li>
@@ -70,6 +80,11 @@ export default function Sidebar(props: sidebarType) {
                         </div>
                     </div>
                 </ul>
+                {searchButtonClicked && 
+                    <div className="absolute left-full inset-y-0 duration-100 ease-in-out border-transparent">
+                        <SearchBar contentBuffer={searchBarBuffer} handleReturnBuffer={setSearchBarBuffer}/>
+                    </div>  
+                }
             </div>
         </>
     )
