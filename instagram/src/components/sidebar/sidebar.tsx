@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Modal from './modal';
 import { sidebarType } from './sidebarType';
 import SearchBar from '../search/searchBar'
+import { useNavigate } from 'react-router-dom';
+import * as ROUTES from  '../../constants/routes';
+import UserContext from '../../contexts/user-context'
 
 export default function Sidebar(props: sidebarType) {
     const [showMore, setShowMore] = useState(false);
@@ -9,6 +12,13 @@ export default function Sidebar(props: sidebarType) {
     const [searchButtonClicked,setSearchButtonClicked] = useState(false);
     const [isCollapsed,setIsCollapsed] = useState(false);
     const [searchBarBuffer,setSearchBarBuffer] = useState<string>("");
+    const navigate = useNavigate();
+    const { username, setUsername } = useContext(UserContext);
+    function handleLogout() {
+        localStorage.clear();
+        setUsername('');
+        navigate(ROUTES.LOGIN);
+    }
 
     return (
         <>
@@ -69,7 +79,7 @@ export default function Sidebar(props: sidebarType) {
                                         <li className="flex border-b border-gray-primary py-3 cursor-pointer">
                                             <span className='ml-3'>Switch accounts</span>
                                         </li>
-                                        <li className="flex border-b border-gray-primary py-3 cursor-pointer">
+                                        <li className="flex border-b border-gray-primary py-3 cursor-pointer" onClick={handleLogout}>
                                             <span className='ml-3'>Logout</span>
                                         </li>
                                     </div>}

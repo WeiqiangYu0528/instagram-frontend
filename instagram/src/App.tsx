@@ -12,7 +12,7 @@ function App() {
   const Dashboard= lazy(() => import('./pages/dashboard'));
   const SignUp = lazy(() => import("./pages/sign-up"));
   return (
-    <UserContext.Provider value={{username: username}}>
+    <UserContext.Provider value={{username: username, setUsername: setUsername}}>
       <Router>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
