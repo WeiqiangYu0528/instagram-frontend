@@ -1,34 +1,56 @@
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function UserModal({
   isOpen,
   isUserSelf,
   onClose,
+  getAvatar,
 }: {
   isOpen: boolean;
   isUserSelf: boolean;
   onClose: () => void;
+  getAvatar: () => void;
 }) {
   const cancelButtonRef = useRef(null);
-  const [imgs, setImgs] = useState<string[]>([]);
-  const [imgFiles, setImgFiles] = useState<Blob[]>([]);
+  // const [imgs, setImgs] = useState<string[]>([]);
+  const [imgFile, setImgFile] = useState<Blob>();
+  const {username} = useParams();
 
-  const handleFileChange = (e: any) => {
-    const newImgs = [];
-    for (const file of e.target.files) {
-      newImgs.push(URL.createObjectURL(file));
-    }
-    setImgs([...imgs, ...newImgs]);
-    setImgFiles([...imgFiles, ...e.target.files]);
+  const HandleFileChange = async (e: any) => {
+    setImgFile(e.target.files[0]);
+    setTimeout(()=>{},1000);
+    console.log(e.target.files[0]);
+    console.log(imgFile);
+    updateAvatar();
   };
+
+  async function updateAvatar() {
+    const formData = new FormData();
+    if(username !== undefined)
+    formData.append("username", username);
+    if (imgFile) {
+    formData.append("avatar", imgFile);
+    }
+    await axios({
+      method: "post",
+      url: "http://www.localhost:8080/user/changeAva",
+      data: formData,
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((res) => {
+      console.log(res);
+      getAvatar();
+    });
+  }
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10"
+        className="relative z-50"
         initialFocus={cancelButtonRef}
         onClose={onClose}
       >
@@ -61,17 +83,14 @@ export default function UserModal({
                     Change Profile Photo
                   </h1>
                   <label className="inline-block h-10 w-full">
-                    <span
-                      className="flex items-center justify-center h-10 border-t-2 text-blue-500 font-bold cursor-pointer"
-                    >
+                    <span className="flex items-center justify-center h-10 border-t-2 text-blue-500 font-bold cursor-pointer">
                       Upload Photo
                     </span>
                     <input
                       type="file"
                       className="absolute w-full opacity-0 -z-10"
-                      onChange={handleFileChange}
+                      onChange={HandleFileChange}
                       accept="image/*"
-                      multiple
                     ></input>
                   </label>
                   <span className="flex items-center justify-center h-10 border-t-2 cursor-pointer text-red-500 font-bold">

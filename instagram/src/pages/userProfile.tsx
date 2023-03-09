@@ -1,10 +1,13 @@
-import { lazy,useEffect, useState } from "react";
+import { lazy, useReducer, useEffect, useState,useContext } from "react";
+import {Route, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import Header from "../components/profile/header";
 import Photos from "../components/profile/photos";
 import { postType } from "../components/post/postType";
 import Sidebar from "../components/sidebar/sidebar";
 import { useParams } from "react-router-dom";
+import * as ROUTES from '../constants/routes';
+import UserContext from '../contexts/user-context'
 
 export default function Profile(props: any) {
   // let isUserSelf:boolean = false;

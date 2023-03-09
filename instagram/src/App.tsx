@@ -22,7 +22,6 @@ function App() {
         <Routes>
           <Route path={ROUTES.LOGIN} element={<Login onLogin={setUsername}/>} errorElement={<ErrorPage/>}  />
           <Route path={ROUTES.SIGN_UP} element={<SignUp/>}errorElement={<ErrorPage/>} />
-          {/* <Route path={ROUTES.INDEX} element={<Index/>}/> */}
           <Route path={ROUTES.DASHBOARD} element={<Dashboard/>}errorElement={<ErrorPage/>} />
           <Route path={ROUTES.PROFILE} element={<UserProfile/>} errorElement={<ErrorPage/>} />
           <Route path='*' element={<NotFoundPage/>} />

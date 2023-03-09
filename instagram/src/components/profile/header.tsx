@@ -1,8 +1,10 @@
 import React from "react";
-import { useState} from "react";
+import { useState, useEffect} from "react";
 import UserModal from "./userModal";
 import AvatarModal from "./avatarModal";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+
 
 export default function UserProfile({
   isUserSelf,
@@ -14,6 +16,25 @@ export default function UserProfile({
   const [isAvatarOpen, setAvatarOpen] = useState(false);
   const [isUserOpen, setUserOpen] = useState(false);
   const {username} = useParams();
+  const [avatar, setAvatar] = useState("");
+  useEffect(() => {
+    getAvatar();
+  }, []);
+  
+  async function getAvatar() {
+    const formData = new FormData();
+    if(username !== undefined)
+    formData.append("username",username);
+    await axios({
+      method:"post",
+      url:"http://www.localhost:8080/user/getAva",
+      data:formData,
+      headers:{ "Content-Type": "multipart/form-data" }
+    }).then((res)=>{
+      console.log(res);
+      setAvatar(res.data.res.data.data)
+    })
+  }
 
   return (
     <>
@@ -127,6 +148,7 @@ export default function UserProfile({
         isOpen={isAvatarOpen}
         isUserSelf={isUserSelf}
         onClose={() => setAvatarOpen(false)}
+        getAvatar={()=>getAvatar()}
       ></AvatarModal>
     </>
   );

@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
 import Skeleton from "react-loading-skeleton";
-import { useState } from "react"
+import { useState } from "react";
 import { postType, postImage } from "../post/postType";
-import PostModal from "../post/modal"
+import PostModal from "../post/modal";
 
 export default function Photos({
   isUserSelf,
