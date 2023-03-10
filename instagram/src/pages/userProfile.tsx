@@ -13,12 +13,16 @@ export default function Profile(props: any) {
   // let isUserSelf:boolean = false;
   const { username } = useParams();
   const [isUserSelf, setIsUserSelf] = useState(false);
+  const [avatar, setAvatar] = useState("");
+  const [fullname, setFullname] = useState("");
   const [posts, setPosts] = useState<postType[]>([]);
 
   async function getUserPosts() {
     try{
-      const response = await axios.get(`http://www.localhost:8080/api/posts/${username}`);
-      setPosts(response.data);
+      const response = await axios.get(`http://localhost:8080/${username}`);
+      setAvatar(response.data.avatar.data.data);
+      setFullname(response.data.fullname);
+      setPosts(response.data.posts);
       console.log(response.data);
     }
     catch(err){
@@ -52,7 +56,7 @@ useEffect(
           </div>
           <div className="col-span-4 flex flex-col">
             <button onClick={() => setIsUserSelf(!isUserSelf)}>set user</button>
-            <Header isUserSelf={isUserSelf} postCount={posts.length} />
+            <Header isUserSelf={isUserSelf} postCount={posts.length} username={username}  avatar={avatar} fullname = {fullname} setAvatar={setAvatar} />
             <Photos isUserSelf={isUserSelf} posts={posts} onCreateComment={getUserPosts} />
           </div>
         </div>

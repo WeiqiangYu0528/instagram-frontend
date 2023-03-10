@@ -8,24 +8,27 @@ export default function UserModal({
   isOpen,
   isUserSelf,
   onClose,
-  getAvatar,
+  setAvatar
 }: {
   isOpen: boolean;
   isUserSelf: boolean;
   onClose: () => void;
-  getAvatar: () => void;
+  setAvatar:any;
 }) {
   const cancelButtonRef = useRef(null);
   // const [imgs, setImgs] = useState<string[]>([]);
-  const [imgFile, setImgFile] = useState<Blob>();
+  const [imgFile, setImgFile] = useState<File>();
   const {username} = useParams();
+
+  useEffect(() => {
+    if(imgFile !== undefined){
+      onClose();
+      updateAvatar();
+    }
+ }, [imgFile]);
 
   const HandleFileChange = async (e: any) => {
     setImgFile(e.target.files[0]);
-    setTimeout(()=>{},1000);
-    console.log(e.target.files[0]);
-    console.log(imgFile);
-    updateAvatar();
   };
 
   async function updateAvatar() {
@@ -42,7 +45,7 @@ export default function UserModal({
       headers: { "Content-Type": "multipart/form-data" },
     }).then((res) => {
       console.log(res);
-      getAvatar();
+      setAvatar(res.data.res.data.data);
     });
   }
 

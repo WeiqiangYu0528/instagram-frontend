@@ -9,7 +9,7 @@ import * as ROUTES from '../../constants/routes'
 
 export default function Sidebar(props: sidebarType) {
     const navigate = useNavigate();
-    const {username, setUsername} = useContext(UserContext);
+    const {username,avatar, setUser} = useContext(UserContext);
     const [showMore, setShowMore] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [searchButtonClicked,setSearchButtonClicked] = useState(false);
@@ -17,7 +17,7 @@ export default function Sidebar(props: sidebarType) {
     const [searchBarBuffer,setSearchBarBuffer] = useState<string>("");
     function handleLogout() {
         localStorage.clear();
-        setUsername('');
+        setUser({});
         navigate(ROUTES.LOGIN);
     }
 
@@ -63,7 +63,7 @@ export default function Sidebar(props: sidebarType) {
                             <span className='ml-3'>Create</span>
                         </li>
                         <li className="flex items-center mt-7 cursor-pointer" onClick={() => {navigate(`/p/${username}`)}}>
-                            <img className='rounded-full w-6 h-6 flex mr-3' src="/images/avatars/cat.jpg" alt="" />
+                            <img className='rounded-full w-6 h-6 flex mr-3' src={"data:image/png;base64," + avatar} alt="" />
                             Profile
                         </li>
                         <div className='absolute bottom-0 mt-7 py-10 pr-32 '>

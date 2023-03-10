@@ -162,7 +162,7 @@ export default function Photos({
         :
         <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
           {posts.map((post) => (
-            <div>
+            <div key={post.id}>
               <PostModal
                 id={post.id}
                 open={open}
