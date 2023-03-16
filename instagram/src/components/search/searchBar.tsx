@@ -57,8 +57,14 @@ export default function SearchBar(props:searchBarParas){
                     headers : {"Content-Type" : "application/json;charset=utf-8"},
                 }).then(function (res){
                     let results = res.data;
+                    let tempResultCards:SearchResult[]=[];
                     if(Array.isArray(results)){
-                        setResultCards(results);
+                        results.map((result)=>{
+                            let tempCard:SearchResult = {userName:result.username,avatarURL:"/images/avatars/default_avatar.jpg",isFollowing:true};
+                            if(result.avatar!==null) tempCard.avatarURL="data:image/png;base64, "+result.avatar.data.data;
+                            tempResultCards.push(tempCard);
+                        })
+                        setResultCards(tempResultCards);
                     }
                     else{//res.data is not array
                         throw new Error("incorrect reponse of search: not an array of results");

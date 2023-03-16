@@ -20,7 +20,8 @@ export default function Profile(props: any) {
   async function getUserPosts() {
     try{
       const response = await axios.get(`http://localhost:8080/${username}`);
-      setAvatar(response.data.avatar.data.data);
+      if(response.data.avatar!==null) setAvatar("data:image/png;base64, "+response.data.avatar.data.data);
+      else setAvatar("/images/avatars/default_avatar.jpg");
       setFullname(response.data.fullname);
       setPosts(response.data.posts);
       console.log(response.data);
