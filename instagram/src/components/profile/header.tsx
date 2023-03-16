@@ -30,7 +30,7 @@ export default function UserProfile({
         <div className="container flex justify-center items-center">
           <img
             className="rounded-full h-40 w-40 flex cursor-pointer"
-            src={'data:image/png;base64,' + avatar}
+            src={avatar}
             alt="profile pic"
             onClick={()=>setAvatarOpen(true)}
           />
