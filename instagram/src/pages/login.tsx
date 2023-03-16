@@ -26,7 +26,7 @@ export default function Login(props: loginType) {
                 avatar: "/images/avatars/default_avatar.jpg",
             }
             if(response.data.avatar!==null){
-                user.avatar = "data:image/png;base64"+response.data.avatar.data.data;
+                user.avatar = "data:image/png;base64, "+response.data.avatar.data.data;
             }
             props.onLogin(user);
             navigate(ROUTES.DASHBOARD);
