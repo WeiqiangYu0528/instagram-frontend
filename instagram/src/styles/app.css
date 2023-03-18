@@ -716,8 +716,8 @@ video {
 .h-full {
   height: 100%;
 }
-.h-3\/5 {
-  height: 60%;
+.h-4\/5 {
+  height: 80%;
 }
 .h-4\/6 {
   height: 66.666667%;
@@ -749,56 +749,8 @@ video {
 .h-1\/5 {
   height: 20%;
 }
-.h-3 {
-  height: 0.75rem;
-}
-.h-4\/5 {
-  height: 80%;
-}
 .max-h-full {
   max-height: 100%;
-}
-.max-h-\[32rem\] {
-  max-height: 32rem;
-}
-.max-h-\[32re\] {
-  max-height: 32re;
-}
-.max-h-\[32r\] {
-  max-height: 32r;
-}
-.max-h-\[32\] {
-  max-height: 32;
-}
-.max-h-\[3\] {
-  max-height: 3;
-}
-.max-h-\[\] {
-  max-height: ;
-}
-.max-h-\[3\/\] {
-  max-height: 3/;
-}
-.max-h-\[3\/5\] {
-  max-height: 3/5;
-}
-.max-h-\[rem\] {
-  max-height: rem;
-}
-.max-h-\[6rem\] {
-  max-height: 6rem;
-}
-.max-h-\[60rem\] {
-  max-height: 60rem;
-}
-.max-h-\[60r\] {
-  max-height: 60r;
-}
-.max-h-\[60\] {
-  max-height: 60;
-}
-.max-h-\[60v\] {
-  max-height: 60v;
 }
 .max-h-\[60vh\] {
   max-height: 60vh;
@@ -967,9 +919,6 @@ video {
 }
 .overflow-y-scroll {
   overflow-y: scroll;
-}
-.overscroll-y-auto {
-  overscroll-behavior-y: auto;
 }
 .rounded {
   border-radius: 0.25rem;
@@ -1152,8 +1101,11 @@ video {
 .pb-\[75\%\] {
   padding-bottom: 75%;
 }
-.pt-5 {
-  padding-top: 1.25rem;
+.pt-6 {
+  padding-top: 1.5rem;
+}
+.pb-6 {
+  padding-bottom: 1.5rem;
 }
 .pb-\[100\%\] {
   padding-bottom: 100%;
@@ -1164,14 +1116,14 @@ video {
 .pt-32 {
   padding-top: 8rem;
 }
+.pt-5 {
+  padding-top: 1.25rem;
+}
 .pl-2 {
   padding-left: 0.5rem;
 }
 .pr-2 {
   padding-right: 0.5rem;
-}
-.pt-6 {
-  padding-top: 1.5rem;
 }
 .pb-8 {
   padding-bottom: 2rem;
@@ -1182,20 +1134,8 @@ video {
 .pb-3 {
   padding-bottom: 0.75rem;
 }
-.pb-6 {
-  padding-bottom: 1.5rem;
-}
 .pr-32 {
   padding-right: 8rem;
-}
-.pt-10 {
-  padding-top: 2.5rem;
-}
-.pb-1 {
-  padding-bottom: 0.25rem;
-}
-.pb-10 {
-  padding-bottom: 2.5rem;
 }
 .text-left {
   text-align: left;
@@ -1280,14 +1220,6 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-.text-slate-400 {
-  --tw-text-opacity: 1;
-  color: rgb(148 163 184 / var(--tw-text-opacity));
-}
-.text-gray-50 {
-  --tw-text-opacity: 1;
-  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 .no-underline {
   text-decoration-line: none;
@@ -1595,12 +1527,5 @@ video {
 
   .sm\:text-left {
     text-align: left;
-  }
-
-  @media (min-width: 640px) {
-
-    .sm\:sm\:text-left {
-      text-align: left;
-    }
   }
 }
