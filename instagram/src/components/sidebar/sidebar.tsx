@@ -27,7 +27,7 @@ export default function Sidebar(props: sidebarType) {
             <div className="container col-span-1 bg-white p-10 border-r border-gray-primary h-screen sticky top-0 z-10">
                 <div className="text-gray-700 text-center flex align-items cursor-pointer">
                     <h1 className="flex">
-                        <img src="http://localhost:3000/images/logo.png" alt="Instagram" className="mt-2 w-6/12" />
+                        <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12" />
                     </h1>
                 </div>
                 <ul>
@@ -92,7 +92,7 @@ export default function Sidebar(props: sidebarType) {
                     </div>
                 </ul>
                 {searchButtonClicked && 
-                    <div className="absolute left-full inset-y-0 duration-100 ease-in-out border-transparent z-10">
+                    <div className="absolute left-full inset-y-0 duration-100 ease-in-out border-transparent z-20">
                         <SearchBar contentBuffer={searchBarBuffer} handleReturnBuffer={setSearchBarBuffer}/>
                     </div>  
                 }

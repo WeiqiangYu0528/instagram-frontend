@@ -31,7 +31,7 @@ export default function AddComment(props: postAddComment) {
   return (
     <div className='border-t border-gray-primary'>
         <form className='flex justify-between pl-0 pr-5' method='POST' onSubmit={handleSubmit}>
-        <input data-testid="input-comment" type="text" aria-label='Add a comment' autoComplete='off' className='text-sm text-gray-base w-full mr-3 py-5 px-4'
+        <input data-testid="input-comment" type="text" aria-label='Add a comment' autoComplete='off' className='text-sm text-gray-base w-full mr-3 py-5 px-4 focus:outline-none'
         name='add-comment' placeholder='Add a comment' value={comment} onChange={(e) => setComment(e.target.value) }/>
         {comment !== "" && <button  style={{ "color": "rgb(0, 149, 246)" }} className="text-sm font-bold text-blue-medium" data-testid="post-button" type='submit'>POST</button>}
         </form>

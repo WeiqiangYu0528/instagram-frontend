@@ -16,7 +16,6 @@ function App() {
   const Login = lazy(() => import('./pages/login'));
   const Dashboard= lazy(() => import('./pages/dashboard'));
   const UserProfile= lazy(() => import('./pages/userProfile'));
-  const Index = lazy(() => import("./pages/index"));
   const SignUp = lazy(() => import("./pages/sign-up"));
   const ErrorPage = lazy(() => import("./pages/error-page"));
   const NotFoundPage = lazy(() => import("./pages/not-found"));
