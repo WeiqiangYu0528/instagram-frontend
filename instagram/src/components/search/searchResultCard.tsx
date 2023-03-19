@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosAPI from "../../config/axiosConfig"
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,7 @@ export default function SearchResultCard(props:SearchCardProps){
     const [isFollowed,setIsFollowed] = useState(result.isFollowing);
     const handleFollowingClicked = async ()=>{
         let cancelFollowPair:followPair = {currentUserName:"",targetUserName:""}; 
-        await axios.post("/cancelFollow",cancelFollowPair)
+        await axiosAPI.post("/cancelFollow",cancelFollowPair)
         .then(function(response){
             let {res,msg} = response.data;
             console.log("result of cancelFollow: "+msg);
@@ -36,7 +36,7 @@ export default function SearchResultCard(props:SearchCardProps){
     };
     const handleFollowClicked= async ()=>{
         let setFollowPair:followPair = {currentUserName:"",targetUserName:""}; 
-        await axios.post("/setFollow",setFollowPair)
+        await axiosAPI.post("/setFollow",setFollowPair)
         .then(function(response){
             let {res,msg} = response.data;
             console.log("result of setFollow: "+msg);

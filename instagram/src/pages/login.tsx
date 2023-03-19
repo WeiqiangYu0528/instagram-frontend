@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from  '../constants/routes';
 import { loginType } from './pageType';
+import axiosAPI from "../config/axiosConfig"
 
 export default function Login(props: loginType) {
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ export default function Login(props: loginType) {
         event.preventDefault();
         const obj = {username:emailAddress, password:password};
         try {
-            const response = await axios.post('http://localhost:8080/login', obj);
+            const response = await axiosAPI.post('/login', obj);
             console.log(response);
             let user = {
                 username: response.data.username,

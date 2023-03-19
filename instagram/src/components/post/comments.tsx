@@ -7,7 +7,6 @@ export default function Comments(props:postComments) {
     <div className="p-4 pt-1 pb-4">
       <p className="text-sm text-gray-base mb-1 cursor-pointer">View all comments</p>
       {props.comments && props.comments.map((comment:postComment, inx) => {
-        console.log(comment);
         if(inx < 3){
         return (
           <div>

@@ -1,7 +1,7 @@
 import { Fragment, useContext, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { modalType } from './sidebarType'
-import axios from 'axios';
+import axiosAPI from "../../config/axiosConfig"
 import Thumbnail from './thumbnail';
 import ModalForm from './modal-form';
 import UserContext from '../../contexts/user-context';
@@ -56,10 +56,7 @@ export default function Modal(props: modalType) {
       for (const imgFile of imgFiles) {
         formData.append("media", imgFile);
       }
-      await axios({
-        method: "post",
-        url: `http://localhost:8080/api/posts/${user.username}`,
-        data: formData,
+      await axiosAPI.post(`/api/posts/${user.username}`,formData,{
         headers: { "Content-Type": "multipart/form-data" },
       }).then(function (res) {
         console.log(res);

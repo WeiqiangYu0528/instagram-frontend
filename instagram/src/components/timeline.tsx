@@ -3,7 +3,6 @@ import Skeleton from 'react-loading-skeleton'
 import Post from './post'
 import { postType } from './post/postType';
 import { timelineType } from './types';
-// import api from '../api/axiosConfig'
 
 export default function Timeline(props:timelineType) {
 

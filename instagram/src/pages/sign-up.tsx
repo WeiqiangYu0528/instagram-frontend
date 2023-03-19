@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axiosAPI from "../config/axiosConfig"
 import { useState, useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as ROUTES from  '../constants/routes';
@@ -31,7 +31,7 @@ export default function SignUp() {
         }
         const obj = {emailAddress:emailAddress, fullName:fullName, username:username, password:password};
         try {
-            const response = await axios.post('http://localhost:8080/register', obj);
+            const response = await axiosAPI.post('/register', obj);
             console.log(response);
             setError('')
             setMessage('Congrats! You have successfully registered.');

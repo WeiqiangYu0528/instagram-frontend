@@ -1,12 +1,10 @@
-import { lazy, useReducer, useEffect, useState,useContext } from "react";
-import {Route, useNavigate } from 'react-router-dom';
-import axios from "axios";
+import { useEffect, useState,useContext } from "react";
+import axiosAPI from "../config/axiosConfig"
 import Header from "../components/profile/header";
 import Photos from "../components/profile/photos";
 import { postType } from "../components/post/postType";
 import Sidebar from "../components/sidebar/sidebar";
 import { useParams } from "react-router-dom";
-import * as ROUTES from '../constants/routes';
 import UserContext from '../contexts/user-context'
 
 export default function Profile(props: any) {
@@ -19,7 +17,7 @@ export default function Profile(props: any) {
 
   async function getUserPosts() {
     try{
-      const response = await axios.get(`http://localhost:8080/${username}`);
+      const response = await axiosAPI.get(`/${username}`);
       if(response.data.avatar!==null) setAvatar("data:image/png;base64, "+response.data.avatar.data.data);
       else setAvatar("/images/avatars/default_avatar.jpg");
       setFullname(response.data.fullname);
@@ -33,7 +31,7 @@ export default function Profile(props: any) {
 
 async function getPosts() {
   try{
-    const response = await axios.get("http://www.localhost:8080/api/posts");
+    const response = await axiosAPI.get("/api/posts");
     setPosts(response.data);
     console.log(response.data);
   }

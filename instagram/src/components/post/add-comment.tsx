@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { postAddComment } from './postType';
-import axios from 'axios';
+import axiosAPI from "../../config/axiosConfig"
 import UserContext from '../../contexts/user-context';
 
 export default function AddComment(props: postAddComment) {
@@ -21,10 +21,7 @@ export default function AddComment(props: postAddComment) {
   }
 
   async function addComment() {
-    const response = await axios.post("http://localhost:8080/api/posts",newComment)
-          .then(function(response){
-            console.log(response);
-          })
+    const response = await axiosAPI.post("/api/posts",newComment)
           .catch(function(err){
             console.error(err);
           });

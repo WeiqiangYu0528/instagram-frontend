@@ -161,7 +161,7 @@ export default function Photos({
         </div>
         :
         <div className="grid grid-cols-3 gap-8 mt-4 mb-12">
-          {posts !== null && posts.map((post) => (
+          {posts !== undefined && posts.map((post) => (
             <div key={post.id}>
               <PostModal
                 id={post.id}
